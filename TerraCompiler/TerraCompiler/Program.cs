@@ -12,18 +12,16 @@ namespace TerraCompiler
     class Program
     {
         static void Main(string[] args)
-        {
-            //string input = "Window { Test }";
-            
+        {            
             AntlrInputStream inputStream = new AntlrInputStream(File.OpenRead(Directory.GetCurrentDirectory() + "/test.terra"));
             TerraLexer terraLexer = new TerraLexer(inputStream);
             CommonTokenStream commonTokenStream = new CommonTokenStream(terraLexer);
             TerraParser terraParser = new TerraParser(commonTokenStream); 
-            terraParser.ErrorHandler = new err();
-            Ehhh ehhh = new Ehhh();
+            terraParser.ErrorHandler = new DebugErrorStrategy();
+            DebugListener debugListener = new DebugListener();
 
             ParseTreeWalker walker = new ParseTreeWalker();
-            walker.Walk(ehhh, terraParser.start());
+            walker.Walk(debugListener, terraParser.start());
 
             Console.ReadKey();
         }

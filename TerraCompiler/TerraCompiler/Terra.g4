@@ -25,13 +25,8 @@ T_BlockEnd			:	'}'	;
 T_StringBeginEnd	:	'"'	;
 T_Period			:	'.' ;
 T_PathSeparator		:	'/' ;
-
-// -- Keywords
-
-KW_Include			:	'include' ;
-KW_Define			:	'define' ;
-KW_Window			:	'Window' ;
-KW_As				:	'as' ;
+T_CollectionStart	:	'[' ;
+T_CollectionEnd		:	']' ;
 
 // --------
 // -- Rules
@@ -39,13 +34,14 @@ KW_As				:	'as' ;
 
 WS : (' ' | '\r' | '\t' | '\n')+ -> skip ;
 
-start				:	include*? definition*? window EOF ;
+start				
+	:	include*? definition*? window EOF ;
 
-
-identifier		:	(T_Letter | T_CapitalLetter | '_')(T_Letter | T_CapitalLetter | T_Digit | '_')* ;
+identifier		
+	:	(T_Letter | T_CapitalLetter | '_')(T_Letter | T_CapitalLetter | T_Digit | '_')* ;
 
 include				
-	:	KW_Include path ;
+	:	'include' path ;
 
 path				
 	:	T_StringBeginEnd pathExpression fileName T_StringBeginEnd ;
@@ -61,14 +57,44 @@ fileName
 	|	identifier ;
 
 definition			
-	:	KW_Define identifier KW_As identifier block
-	|	KW_Define identifier block ;
+	:	'define' identifier 'as' identifier block
+	|	'define' identifier block ;
 
 window				
-	:	KW_Window block ;
+	:	'Window' block ;
 
 block 				
 	:	T_BlockStart statement*? T_BlockEnd ;
 
 statement 			
-	:	'Test' ;
+	:	identifier block
+	|	identifier ':' string
+	|	identifier ':' number
+	|	identifier ':' identifier 
+	|	identifier ':' collection 
+	|	identifier ':' point ;
+
+string
+	:	T_StringBeginEnd .*? T_StringBeginEnd ;
+
+number
+	:	'-'? T_Digit+
+	|	'-'? T_Digit* '.' T_Digit+ ;
+
+collection
+	:	T_CollectionStart (identifier block)*? T_CollectionEnd ;
+
+point
+	:	'top' 			|	'TOP' 			| 	'Top'
+	|	'topleft' 		|	'TOPLEFT' 		|	'Topleft'		|	'TopLeft'
+	|	'topright'		|	'TOPRIGHT'		|	'Topright'		|	'TopRight'
+	|	'bottom'		|	'BOTTOM'		|	'Bottom'
+	|	'bottomleft'	|	'BOTTOMLEFT'	|	'Bottomleft'	|	'BottomLeft'
+	|	'bottomright'	|	'BOTTOMRIGHT'	|	'Bottomright'	|	'BottomRight'
+	|	'left'			|	'LEFT'			|	'Left'
+	|	'right'			|	'RIGHT'			|	'Right'
+	|	'center'		|	'CENTER'		|	'Center' ;
+
+
+
+

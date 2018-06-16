@@ -130,4 +130,44 @@ public interface ITerraListener : IParseTreeListener {
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
 	void ExitStatement([NotNull] TerraParser.StatementContext context);
+	/// <summary>
+	/// Enter a parse tree produced by <see cref="TerraParser.string"/>.
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	void EnterString([NotNull] TerraParser.StringContext context);
+	/// <summary>
+	/// Exit a parse tree produced by <see cref="TerraParser.string"/>.
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	void ExitString([NotNull] TerraParser.StringContext context);
+	/// <summary>
+	/// Enter a parse tree produced by <see cref="TerraParser.number"/>.
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	void EnterNumber([NotNull] TerraParser.NumberContext context);
+	/// <summary>
+	/// Exit a parse tree produced by <see cref="TerraParser.number"/>.
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	void ExitNumber([NotNull] TerraParser.NumberContext context);
+	/// <summary>
+	/// Enter a parse tree produced by <see cref="TerraParser.collection"/>.
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	void EnterCollection([NotNull] TerraParser.CollectionContext context);
+	/// <summary>
+	/// Exit a parse tree produced by <see cref="TerraParser.collection"/>.
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	void ExitCollection([NotNull] TerraParser.CollectionContext context);
+	/// <summary>
+	/// Enter a parse tree produced by <see cref="TerraParser.point"/>.
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	void EnterPoint([NotNull] TerraParser.PointContext context);
+	/// <summary>
+	/// Exit a parse tree produced by <see cref="TerraParser.point"/>.
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	void ExitPoint([NotNull] TerraParser.PointContext context);
 }
