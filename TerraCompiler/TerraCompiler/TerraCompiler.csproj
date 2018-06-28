@@ -47,6 +47,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Common\Types.cs" />
     <Compile Include="Debug\DebugListener.cs" />
     <Compile Include="Debug\DebugErrorStrategy.cs" />
     <Compile Include="Program.cs" />
@@ -55,10 +56,15 @@
     <Compile Include="TerraLexer.cs" />
     <Compile Include="TerraListener.cs" />
     <Compile Include="TerraParser.cs" />
+    <Compile Include="Test.cs" />
+    <Compile Include="WorldOfWarcraft\TypeChecker.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="TestData\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
