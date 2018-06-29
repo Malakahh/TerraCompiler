@@ -51,6 +51,7 @@
     <Compile Include="Debug\DebugErrorStrategy.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ScopeWalker.cs" />
     <Compile Include="TerraBaseListener.cs" />
     <Compile Include="TerraLexer.cs" />
     <Compile Include="TerraListener.cs" />
