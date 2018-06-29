@@ -43,15 +43,6 @@ identifier
 include				
 	:	'include' path ;
 
-path				
-	:	T_StringBeginEnd pathExpression fileName T_StringBeginEnd ;
-
-pathExpression		
-	:	pathExpression T_Period T_Period T_PathSeparator
-	|	pathExpression T_Period T_PathSeparator
-	|	pathExpression identifier T_PathSeparator
-	|	; // Intentionally left blank
-
 fileName			
 	:	identifier T_Period identifier
 	|	identifier ;
@@ -69,20 +60,34 @@ block
 statement 			
 	:	identifier block
 	|	identifier ':' string
-	|	identifier ':' number
+	|	identifier ':' integer
+	|	identifier ':' float
 	|	identifier ':' identifier 
 	|	identifier ':' collection 
 	|	identifier ':' point ;
 
+collection
+	:	T_CollectionStart (identifier block)*? T_CollectionEnd ;
+
+// -- Types
+
+path				
+	:	T_StringBeginEnd pathExpression fileName T_StringBeginEnd ;
+
+pathExpression		
+	:	pathExpression T_Period T_Period T_PathSeparator
+	|	pathExpression T_Period T_PathSeparator
+	|	pathExpression identifier T_PathSeparator
+	|	; // Intentionally left blank
+
 string
 	:	T_StringBeginEnd .*? T_StringBeginEnd ;
 
-number
-	:	'-'? T_Digit+
-	|	'-'? T_Digit* '.' T_Digit+ ;
+integer
+	:	'-'? T_Digit+ ;
 
-collection
-	:	T_CollectionStart (identifier block)*? T_CollectionEnd ;
+float
+	:	'-'? T_Digit* '.' T_Digit+ ;
 
 point
 	:	'top' 			|	'TOP' 			| 	'Top'

@@ -23,6 +23,12 @@ namespace TerraCompiler
             ParseTreeWalker walker = new ParseTreeWalker();
             walker.Walk(debugListener, terraParser.start());
 
+            terraParser.Reset();
+
+            //ParseTreeWalker w = new ParseTreeWalker();
+            //w.Walk(dl, tp.start());
+            walker.Walk(debugListener, terraParser.start());
+
             Console.ReadKey();
         }
     }
