@@ -47,12 +47,15 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Common\Identifier.cs" />
+    <Compile Include="Common\IdentifierTable.cs" />
+    <Compile Include="Common\Scope.cs" />
     <Compile Include="Common\Types.cs" />
-    <Compile Include="Debug\DebugListener.cs" />
-    <Compile Include="Debug\DebugErrorStrategy.cs" />
+    <Compile Include="Debugging\DebugListener.cs" />
+    <Compile Include="Debugging\DebugErrorStrategy.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="ScopeWalker.cs" />
+    <Compile Include="Common\ScopeWalker.cs" />
     <Compile Include="TerraBaseListener.cs" />
     <Compile Include="TerraLexer.cs" />
     <Compile Include="TerraListener.cs" />
