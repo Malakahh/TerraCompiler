@@ -14,6 +14,7 @@ namespace TerraCompiler.Common
 
         public uint Name { get; private set; }
         public uint[] ancestry;
+        public int Depth { get; private set; }
 
         public Scope()
         {
@@ -24,6 +25,7 @@ namespace TerraCompiler.Common
         public void Enter()
         {
             ancestry = scopeStack.Select((s) => s.Name).ToArray();
+            Depth = scopeStack.Count;
         }
     }
 }
