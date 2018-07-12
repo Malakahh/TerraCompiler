@@ -13,22 +13,14 @@ namespace TerraCompiler
     {
         static void Main(string[] args)
         {            
-            AntlrInputStream inputStream = new AntlrInputStream(File.OpenRead(Directory.GetCurrentDirectory() + "/test.terra"));
+            AntlrInputStream inputStream = new AntlrInputStream(File.OpenRead(Directory.GetCurrentDirectory() + "/TestData/test.terra"));
             TerraLexer terraLexer = new TerraLexer(inputStream);
             CommonTokenStream commonTokenStream = new CommonTokenStream(terraLexer);
-            TerraParser terraParser = new TerraParser(commonTokenStream); 
-            terraParser.ErrorHandler = new DebugErrorStrategy();
-            DebugListener debugListener = new DebugListener();
+            TerraParser terraParser = new TerraParser(commonTokenStream);
 
-            ParseTreeWalker walker = new ParseTreeWalker();
-            walker.Walk(debugListener, terraParser.start());
-
-            terraParser.Reset();
-
-            //ParseTreeWalker w = new ParseTreeWalker();
-            //w.Walk(dl, tp.start());
-            walker.Walk(debugListener, terraParser.start());
-            
+            TerraCompiler.Common.Compiler compiler = new WorldOfWarcraft.Compiler();
+            terraParser.ErrorHandler = compiler.ErrorHandler;
+            compiler.Run(terraParser);
 
             Console.ReadKey();
         }

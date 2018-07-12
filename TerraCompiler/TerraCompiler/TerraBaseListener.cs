@@ -59,6 +59,18 @@ public partial class TerraBaseListener : ITerraListener {
 	/// <param name="context">The parse tree.</param>
 	public virtual void ExitIdentifier([NotNull] TerraParser.IdentifierContext context) { }
 	/// <summary>
+	/// Enter a parse tree produced by <see cref="TerraParser.identifierChain"/>.
+	/// <para>The default implementation does nothing.</para>
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	public virtual void EnterIdentifierChain([NotNull] TerraParser.IdentifierChainContext context) { }
+	/// <summary>
+	/// Exit a parse tree produced by <see cref="TerraParser.identifierChain"/>.
+	/// <para>The default implementation does nothing.</para>
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	public virtual void ExitIdentifierChain([NotNull] TerraParser.IdentifierChainContext context) { }
+	/// <summary>
 	/// Enter a parse tree produced by <see cref="TerraParser.include"/>.
 	/// <para>The default implementation does nothing.</para>
 	/// </summary>
@@ -70,30 +82,6 @@ public partial class TerraBaseListener : ITerraListener {
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
 	public virtual void ExitInclude([NotNull] TerraParser.IncludeContext context) { }
-	/// <summary>
-	/// Enter a parse tree produced by <see cref="TerraParser.path"/>.
-	/// <para>The default implementation does nothing.</para>
-	/// </summary>
-	/// <param name="context">The parse tree.</param>
-	public virtual void EnterPath([NotNull] TerraParser.PathContext context) { }
-	/// <summary>
-	/// Exit a parse tree produced by <see cref="TerraParser.path"/>.
-	/// <para>The default implementation does nothing.</para>
-	/// </summary>
-	/// <param name="context">The parse tree.</param>
-	public virtual void ExitPath([NotNull] TerraParser.PathContext context) { }
-	/// <summary>
-	/// Enter a parse tree produced by <see cref="TerraParser.pathExpression"/>.
-	/// <para>The default implementation does nothing.</para>
-	/// </summary>
-	/// <param name="context">The parse tree.</param>
-	public virtual void EnterPathExpression([NotNull] TerraParser.PathExpressionContext context) { }
-	/// <summary>
-	/// Exit a parse tree produced by <see cref="TerraParser.pathExpression"/>.
-	/// <para>The default implementation does nothing.</para>
-	/// </summary>
-	/// <param name="context">The parse tree.</param>
-	public virtual void ExitPathExpression([NotNull] TerraParser.PathExpressionContext context) { }
 	/// <summary>
 	/// Enter a parse tree produced by <see cref="TerraParser.fileName"/>.
 	/// <para>The default implementation does nothing.</para>
@@ -155,29 +143,17 @@ public partial class TerraBaseListener : ITerraListener {
 	/// <param name="context">The parse tree.</param>
 	public virtual void ExitStatement([NotNull] TerraParser.StatementContext context) { }
 	/// <summary>
-	/// Enter a parse tree produced by <see cref="TerraParser.string"/>.
+	/// Enter a parse tree produced by <see cref="TerraParser.assignment"/>.
 	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	public virtual void EnterString([NotNull] TerraParser.StringContext context) { }
+	public virtual void EnterAssignment([NotNull] TerraParser.AssignmentContext context) { }
 	/// <summary>
-	/// Exit a parse tree produced by <see cref="TerraParser.string"/>.
+	/// Exit a parse tree produced by <see cref="TerraParser.assignment"/>.
 	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	public virtual void ExitString([NotNull] TerraParser.StringContext context) { }
-	/// <summary>
-	/// Enter a parse tree produced by <see cref="TerraParser.number"/>.
-	/// <para>The default implementation does nothing.</para>
-	/// </summary>
-	/// <param name="context">The parse tree.</param>
-	public virtual void EnterNumber([NotNull] TerraParser.NumberContext context) { }
-	/// <summary>
-	/// Exit a parse tree produced by <see cref="TerraParser.number"/>.
-	/// <para>The default implementation does nothing.</para>
-	/// </summary>
-	/// <param name="context">The parse tree.</param>
-	public virtual void ExitNumber([NotNull] TerraParser.NumberContext context) { }
+	public virtual void ExitAssignment([NotNull] TerraParser.AssignmentContext context) { }
 	/// <summary>
 	/// Enter a parse tree produced by <see cref="TerraParser.collection"/>.
 	/// <para>The default implementation does nothing.</para>
@@ -190,6 +166,78 @@ public partial class TerraBaseListener : ITerraListener {
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
 	public virtual void ExitCollection([NotNull] TerraParser.CollectionContext context) { }
+	/// <summary>
+	/// Enter a parse tree produced by <see cref="TerraParser.path"/>.
+	/// <para>The default implementation does nothing.</para>
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	public virtual void EnterPath([NotNull] TerraParser.PathContext context) { }
+	/// <summary>
+	/// Exit a parse tree produced by <see cref="TerraParser.path"/>.
+	/// <para>The default implementation does nothing.</para>
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	public virtual void ExitPath([NotNull] TerraParser.PathContext context) { }
+	/// <summary>
+	/// Enter a parse tree produced by <see cref="TerraParser.pathExpression"/>.
+	/// <para>The default implementation does nothing.</para>
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	public virtual void EnterPathExpression([NotNull] TerraParser.PathExpressionContext context) { }
+	/// <summary>
+	/// Exit a parse tree produced by <see cref="TerraParser.pathExpression"/>.
+	/// <para>The default implementation does nothing.</para>
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	public virtual void ExitPathExpression([NotNull] TerraParser.PathExpressionContext context) { }
+	/// <summary>
+	/// Enter a parse tree produced by <see cref="TerraParser.string"/>.
+	/// <para>The default implementation does nothing.</para>
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	public virtual void EnterString([NotNull] TerraParser.StringContext context) { }
+	/// <summary>
+	/// Exit a parse tree produced by <see cref="TerraParser.string"/>.
+	/// <para>The default implementation does nothing.</para>
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	public virtual void ExitString([NotNull] TerraParser.StringContext context) { }
+	/// <summary>
+	/// Enter a parse tree produced by <see cref="TerraParser.integer"/>.
+	/// <para>The default implementation does nothing.</para>
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	public virtual void EnterInteger([NotNull] TerraParser.IntegerContext context) { }
+	/// <summary>
+	/// Exit a parse tree produced by <see cref="TerraParser.integer"/>.
+	/// <para>The default implementation does nothing.</para>
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	public virtual void ExitInteger([NotNull] TerraParser.IntegerContext context) { }
+	/// <summary>
+	/// Enter a parse tree produced by <see cref="TerraParser.float"/>.
+	/// <para>The default implementation does nothing.</para>
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	public virtual void EnterFloat([NotNull] TerraParser.FloatContext context) { }
+	/// <summary>
+	/// Exit a parse tree produced by <see cref="TerraParser.float"/>.
+	/// <para>The default implementation does nothing.</para>
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	public virtual void ExitFloat([NotNull] TerraParser.FloatContext context) { }
+	/// <summary>
+	/// Enter a parse tree produced by <see cref="TerraParser.boolean"/>.
+	/// <para>The default implementation does nothing.</para>
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	public virtual void EnterBoolean([NotNull] TerraParser.BooleanContext context) { }
+	/// <summary>
+	/// Exit a parse tree produced by <see cref="TerraParser.boolean"/>.
+	/// <para>The default implementation does nothing.</para>
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	public virtual void ExitBoolean([NotNull] TerraParser.BooleanContext context) { }
 	/// <summary>
 	/// Enter a parse tree produced by <see cref="TerraParser.point"/>.
 	/// <para>The default implementation does nothing.</para>

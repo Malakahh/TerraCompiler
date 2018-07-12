@@ -1,0 +1,41 @@
+Window {
+	id: "UIOrigin"
+
+	MyNewControlThatDoesSomething {
+		Button {
+			id: "btnbtnbtn"
+
+			anchors: [
+				AnchorPoint {
+					point: center
+					relativeTo: "UIOrigin"
+					relativePoint: center
+					x: 0
+					y: 0
+				}
+			]
+
+			width: 100
+			height: 50
+		}
+	}
+
+	MyButton {
+		anchors: [
+			AnchorPoint {
+				point: topleft
+				relativeTo: parent
+				relativePoint: topleft
+				x: 50
+				y: 75
+			}
+			AnchorPoint {
+				point: bottomright
+				relativeTo: "btnbtnbtn"
+				relativePoint: topleft
+				x: -100
+				y: -150
+			}
+		]
+	}
+}

@@ -38,7 +38,17 @@ start
 	:	include*? definition*? window EOF ;
 
 identifier		
-	:	(T_Letter | T_CapitalLetter | '_')(T_Letter | T_CapitalLetter | T_Digit | '_')* ;
+	:	(T_Letter | '_')(T_Letter | T_CapitalLetter | T_Digit | '_')* ;
+
+frameIdentifier
+	:	T_CapitalLEtter (T_Letter | T_CapitalLetter | T_Digit | '_')* ;
+
+identifierChain
+	:	identifierChainExpr identifier ;
+
+identifierChainExpr
+	:	identifierChainExpr identifier '.'
+	| ; // Intentionally left blank
 
 include				
 	:	'include' path ;
@@ -59,20 +69,29 @@ block
 
 statement 			
 	:	identifier block
+	|	assignment ;
+
+assignment
+	:	identifier ':' identifier
+	|	identifier ':' identifierChain
+	|	identifier ':' frameIdentifier
 	|	identifier ':' string
 	|	identifier ':' integer
 	|	identifier ':' float
-	|	identifier ':' identifier 
+	|	identifier ':' boolean
 	|	identifier ':' collection 
 	|	identifier ':' point ;
 
 collection
-	:	T_CollectionStart (identifier block)*? T_CollectionEnd ;
+	:	T_CollectionStart (frameIdentifier block)*? T_CollectionEnd ;
 
 // -- Types
 
 path				
 	:	T_StringBeginEnd pathExpression fileName T_StringBeginEnd ;
+
+pathFolder
+	:	
 
 pathExpression		
 	:	pathExpression T_Period T_Period T_PathSeparator
@@ -88,6 +107,11 @@ integer
 
 float
 	:	'-'? T_Digit* '.' T_Digit+ ;
+
+boolean
+	:	'true' | 'false'
+	|	'True' | 'False'
+	|	'TRUE' | 'FALSE' ;
 
 point
 	:	'top' 			|	'TOP' 			| 	'Top'

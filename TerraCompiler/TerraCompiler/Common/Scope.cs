@@ -11,6 +11,13 @@ namespace TerraCompiler.Common
         static Dictionary<uint, Scope> allScopes = new Dictionary<uint, Scope>();
         static uint totalNumScopes = 0;
         static Stack<Scope> scopeStack = new Stack<Scope>();
+        public static Scope Current
+        {
+            get
+            {
+                return scopeStack.Peek();
+            }
+        }
 
         public uint Name { get; private set; }
         public uint[] ancestry;
@@ -20,12 +27,20 @@ namespace TerraCompiler.Common
         {
             Name = totalNumScopes++;
             allScopes.Add(this.Name, this);
-        }
-
-        public void Enter()
-        {
             ancestry = scopeStack.Select((s) => s.Name).ToArray();
             Depth = scopeStack.Count;
+        }
+
+        public static Scope Enter()
+        {
+            Scope s = new Scope();
+            scopeStack.Push(s);
+            return s;
+        }
+
+        public static Scope Exit()
+        {
+            return scopeStack.Pop();
         }
     }
 }

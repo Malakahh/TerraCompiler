@@ -8,10 +8,12 @@ namespace TerraCompiler.Common
 {
     enum Type
     {
+        Frame,
         String,
         Int,
         Float,
+        Boolean,
+        Collection,
         Point,
-        Path,
     }
 }

@@ -51,6 +51,16 @@ public interface ITerraListener : IParseTreeListener {
 	/// <param name="context">The parse tree.</param>
 	void ExitIdentifier([NotNull] TerraParser.IdentifierContext context);
 	/// <summary>
+	/// Enter a parse tree produced by <see cref="TerraParser.identifierChain"/>.
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	void EnterIdentifierChain([NotNull] TerraParser.IdentifierChainContext context);
+	/// <summary>
+	/// Exit a parse tree produced by <see cref="TerraParser.identifierChain"/>.
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	void ExitIdentifierChain([NotNull] TerraParser.IdentifierChainContext context);
+	/// <summary>
 	/// Enter a parse tree produced by <see cref="TerraParser.include"/>.
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
@@ -60,26 +70,6 @@ public interface ITerraListener : IParseTreeListener {
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
 	void ExitInclude([NotNull] TerraParser.IncludeContext context);
-	/// <summary>
-	/// Enter a parse tree produced by <see cref="TerraParser.path"/>.
-	/// </summary>
-	/// <param name="context">The parse tree.</param>
-	void EnterPath([NotNull] TerraParser.PathContext context);
-	/// <summary>
-	/// Exit a parse tree produced by <see cref="TerraParser.path"/>.
-	/// </summary>
-	/// <param name="context">The parse tree.</param>
-	void ExitPath([NotNull] TerraParser.PathContext context);
-	/// <summary>
-	/// Enter a parse tree produced by <see cref="TerraParser.pathExpression"/>.
-	/// </summary>
-	/// <param name="context">The parse tree.</param>
-	void EnterPathExpression([NotNull] TerraParser.PathExpressionContext context);
-	/// <summary>
-	/// Exit a parse tree produced by <see cref="TerraParser.pathExpression"/>.
-	/// </summary>
-	/// <param name="context">The parse tree.</param>
-	void ExitPathExpression([NotNull] TerraParser.PathExpressionContext context);
 	/// <summary>
 	/// Enter a parse tree produced by <see cref="TerraParser.fileName"/>.
 	/// </summary>
@@ -131,25 +121,15 @@ public interface ITerraListener : IParseTreeListener {
 	/// <param name="context">The parse tree.</param>
 	void ExitStatement([NotNull] TerraParser.StatementContext context);
 	/// <summary>
-	/// Enter a parse tree produced by <see cref="TerraParser.string"/>.
+	/// Enter a parse tree produced by <see cref="TerraParser.assignment"/>.
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void EnterString([NotNull] TerraParser.StringContext context);
+	void EnterAssignment([NotNull] TerraParser.AssignmentContext context);
 	/// <summary>
-	/// Exit a parse tree produced by <see cref="TerraParser.string"/>.
+	/// Exit a parse tree produced by <see cref="TerraParser.assignment"/>.
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void ExitString([NotNull] TerraParser.StringContext context);
-	/// <summary>
-	/// Enter a parse tree produced by <see cref="TerraParser.number"/>.
-	/// </summary>
-	/// <param name="context">The parse tree.</param>
-	void EnterNumber([NotNull] TerraParser.NumberContext context);
-	/// <summary>
-	/// Exit a parse tree produced by <see cref="TerraParser.number"/>.
-	/// </summary>
-	/// <param name="context">The parse tree.</param>
-	void ExitNumber([NotNull] TerraParser.NumberContext context);
+	void ExitAssignment([NotNull] TerraParser.AssignmentContext context);
 	/// <summary>
 	/// Enter a parse tree produced by <see cref="TerraParser.collection"/>.
 	/// </summary>
@@ -160,6 +140,66 @@ public interface ITerraListener : IParseTreeListener {
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
 	void ExitCollection([NotNull] TerraParser.CollectionContext context);
+	/// <summary>
+	/// Enter a parse tree produced by <see cref="TerraParser.path"/>.
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	void EnterPath([NotNull] TerraParser.PathContext context);
+	/// <summary>
+	/// Exit a parse tree produced by <see cref="TerraParser.path"/>.
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	void ExitPath([NotNull] TerraParser.PathContext context);
+	/// <summary>
+	/// Enter a parse tree produced by <see cref="TerraParser.pathExpression"/>.
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	void EnterPathExpression([NotNull] TerraParser.PathExpressionContext context);
+	/// <summary>
+	/// Exit a parse tree produced by <see cref="TerraParser.pathExpression"/>.
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	void ExitPathExpression([NotNull] TerraParser.PathExpressionContext context);
+	/// <summary>
+	/// Enter a parse tree produced by <see cref="TerraParser.string"/>.
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	void EnterString([NotNull] TerraParser.StringContext context);
+	/// <summary>
+	/// Exit a parse tree produced by <see cref="TerraParser.string"/>.
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	void ExitString([NotNull] TerraParser.StringContext context);
+	/// <summary>
+	/// Enter a parse tree produced by <see cref="TerraParser.integer"/>.
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	void EnterInteger([NotNull] TerraParser.IntegerContext context);
+	/// <summary>
+	/// Exit a parse tree produced by <see cref="TerraParser.integer"/>.
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	void ExitInteger([NotNull] TerraParser.IntegerContext context);
+	/// <summary>
+	/// Enter a parse tree produced by <see cref="TerraParser.float"/>.
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	void EnterFloat([NotNull] TerraParser.FloatContext context);
+	/// <summary>
+	/// Exit a parse tree produced by <see cref="TerraParser.float"/>.
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	void ExitFloat([NotNull] TerraParser.FloatContext context);
+	/// <summary>
+	/// Enter a parse tree produced by <see cref="TerraParser.boolean"/>.
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	void EnterBoolean([NotNull] TerraParser.BooleanContext context);
+	/// <summary>
+	/// Exit a parse tree produced by <see cref="TerraParser.boolean"/>.
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	void ExitBoolean([NotNull] TerraParser.BooleanContext context);
 	/// <summary>
 	/// Enter a parse tree produced by <see cref="TerraParser.point"/>.
 	/// </summary>
