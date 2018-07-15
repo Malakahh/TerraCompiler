@@ -2,6 +2,8 @@ Window {
 	id: "UIOrigin"
 
 	MyNewControlThatDoesSomething {
+		iid: "hi"
+
 		Button {
 			id: "btnbtnbtn"
 
@@ -21,6 +23,8 @@ Window {
 	}
 
 	MyButton {
+		lol: UIOrigin.hi.btnbtnbtn
+
 		anchors: [
 			AnchorPoint {
 				point: topleft
@@ -37,5 +41,8 @@ Window {
 				y: -150
 			}
 		]
+
+		hi: "hi"
 	}
 }
+

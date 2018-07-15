@@ -51,6 +51,16 @@ public interface ITerraListener : IParseTreeListener {
 	/// <param name="context">The parse tree.</param>
 	void ExitIdentifier([NotNull] TerraParser.IdentifierContext context);
 	/// <summary>
+	/// Enter a parse tree produced by <see cref="TerraParser.frameIdentifier"/>.
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	void EnterFrameIdentifier([NotNull] TerraParser.FrameIdentifierContext context);
+	/// <summary>
+	/// Exit a parse tree produced by <see cref="TerraParser.frameIdentifier"/>.
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	void ExitFrameIdentifier([NotNull] TerraParser.FrameIdentifierContext context);
+	/// <summary>
 	/// Enter a parse tree produced by <see cref="TerraParser.identifierChain"/>.
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
@@ -60,6 +70,16 @@ public interface ITerraListener : IParseTreeListener {
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
 	void ExitIdentifierChain([NotNull] TerraParser.IdentifierChainContext context);
+	/// <summary>
+	/// Enter a parse tree produced by <see cref="TerraParser.identifierChainExpr"/>.
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	void EnterIdentifierChainExpr([NotNull] TerraParser.IdentifierChainExprContext context);
+	/// <summary>
+	/// Exit a parse tree produced by <see cref="TerraParser.identifierChainExpr"/>.
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	void ExitIdentifierChainExpr([NotNull] TerraParser.IdentifierChainExprContext context);
 	/// <summary>
 	/// Enter a parse tree produced by <see cref="TerraParser.include"/>.
 	/// </summary>

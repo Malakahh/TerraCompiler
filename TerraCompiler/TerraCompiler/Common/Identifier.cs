@@ -19,5 +19,12 @@ namespace TerraCompiler.Common
         {
 
         }
+
+        public override int GetHashCode()
+        {
+            return Type.GetHashCode() +
+                Name.GetHashCode() +
+                Scope.Name.GetHashCode();
+        }
     }
 }

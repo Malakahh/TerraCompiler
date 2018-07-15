@@ -17,8 +17,15 @@ namespace TerraCompiler.Common
         }
 
         public static Identifier Find(Func<Identifier, bool> predicate)
-        {
-            return Identifiers.First(predicate);
+        { 
+            try
+            {
+                return Identifiers.First(predicate);
+            }
+            catch (InvalidOperationException)
+            {
+                return null;
+            }
         }
 
         public static Identifier FindWithinScope(string name, Scope scopeToLookIn)

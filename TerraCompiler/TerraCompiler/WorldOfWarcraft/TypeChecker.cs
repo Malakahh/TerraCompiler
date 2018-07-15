@@ -40,16 +40,22 @@ namespace TerraCompiler.WorldOfWarcraft
             }
             else if (context.identifierChain() != null)
             {
-                // Split up chain
+                string text = context.identifierChain().GetText();
+                
 
-                Identifier rhs = IdentifierTable.FindWithinScope(context.;
-                if (rhs == null)
+                while (true)
                 {
-                    throw new Exception("Right hand side identifier not defined.");
+
                 }
 
-                id.Type = Common.Type.Identifier;
-                id.Context = context.identifierChain();
+                //Identifier rhs = IdentifierTable.FindWithinScope(context.;
+                //if (rhs == null)
+                //{
+                //    throw new Exception("Right hand side identifier not defined.");
+                //}
+
+                //id.Type = Common.Type.Identifier;
+                //id.Context = context.identifierChain();
             }
             else if (context.@string() != null)
             {
@@ -124,12 +130,22 @@ namespace TerraCompiler.WorldOfWarcraft
             
         }
 
+        public void EnterFrameIdentifier([NotNull] TerraParser.FrameIdentifierContext context)
+        {
+            
+        }
+
         public void EnterIdentifier([NotNull] TerraParser.IdentifierContext context)
         {
             
         }
 
         public void EnterIdentifierChain([NotNull] TerraParser.IdentifierChainContext context)
+        {
+            
+        }
+
+        public void EnterIdentifierChainExpr([NotNull] TerraParser.IdentifierChainExprContext context)
         {
             
         }
@@ -219,12 +235,22 @@ namespace TerraCompiler.WorldOfWarcraft
             
         }
 
+        public void ExitFrameIdentifier([NotNull] TerraParser.FrameIdentifierContext context)
+        {
+            
+        }
+
         public void ExitIdentifier([NotNull] TerraParser.IdentifierContext context)
         {
             
         }
 
         public void ExitIdentifierChain([NotNull] TerraParser.IdentifierChainContext context)
+        {
+            
+        }
+
+        public void ExitIdentifierChainExpr([NotNull] TerraParser.IdentifierChainExprContext context)
         {
             
         }

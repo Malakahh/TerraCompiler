@@ -35,13 +35,13 @@ T_CollectionEnd		:	']' ;
 WS : (' ' | '\r' | '\t' | '\n')+ -> skip ;
 
 start				
-	:	include*? definition*? window EOF ;
+	:	include*? definition*? window ;
 
 identifier		
 	:	(T_Letter | '_')(T_Letter | T_CapitalLetter | T_Digit | '_')* ;
 
 frameIdentifier
-	:	T_CapitalLEtter (T_Letter | T_CapitalLetter | T_Digit | '_')* ;
+	:	T_CapitalLetter (T_Letter | T_CapitalLetter | T_Digit | '_')* ;
 
 identifierChain
 	:	identifierChainExpr identifier ;
@@ -89,9 +89,6 @@ collection
 
 path				
 	:	T_StringBeginEnd pathExpression fileName T_StringBeginEnd ;
-
-pathFolder
-	:	
 
 pathExpression		
 	:	pathExpression T_Period T_Period T_PathSeparator

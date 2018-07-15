@@ -59,6 +59,18 @@ public partial class TerraBaseListener : ITerraListener {
 	/// <param name="context">The parse tree.</param>
 	public virtual void ExitIdentifier([NotNull] TerraParser.IdentifierContext context) { }
 	/// <summary>
+	/// Enter a parse tree produced by <see cref="TerraParser.frameIdentifier"/>.
+	/// <para>The default implementation does nothing.</para>
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	public virtual void EnterFrameIdentifier([NotNull] TerraParser.FrameIdentifierContext context) { }
+	/// <summary>
+	/// Exit a parse tree produced by <see cref="TerraParser.frameIdentifier"/>.
+	/// <para>The default implementation does nothing.</para>
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	public virtual void ExitFrameIdentifier([NotNull] TerraParser.FrameIdentifierContext context) { }
+	/// <summary>
 	/// Enter a parse tree produced by <see cref="TerraParser.identifierChain"/>.
 	/// <para>The default implementation does nothing.</para>
 	/// </summary>
@@ -70,6 +82,18 @@ public partial class TerraBaseListener : ITerraListener {
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
 	public virtual void ExitIdentifierChain([NotNull] TerraParser.IdentifierChainContext context) { }
+	/// <summary>
+	/// Enter a parse tree produced by <see cref="TerraParser.identifierChainExpr"/>.
+	/// <para>The default implementation does nothing.</para>
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	public virtual void EnterIdentifierChainExpr([NotNull] TerraParser.IdentifierChainExprContext context) { }
+	/// <summary>
+	/// Exit a parse tree produced by <see cref="TerraParser.identifierChainExpr"/>.
+	/// <para>The default implementation does nothing.</para>
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	public virtual void ExitIdentifierChainExpr([NotNull] TerraParser.IdentifierChainExprContext context) { }
 	/// <summary>
 	/// Enter a parse tree produced by <see cref="TerraParser.include"/>.
 	/// <para>The default implementation does nothing.</para>
